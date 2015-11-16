@@ -1,13 +1,16 @@
 <h1>Post request recieved!</h1>
+<section>
+<span>Query Contents</span>
 <ul>
   {{#each dataList}}
     <li>{{this.name}}: {{this.value}}
   {{/each}}
 </ul>
 <br>
-<br>
+<span>Body Contents</span>
 <ul>
   {{#each bDataList}}
     <li>{{this.name}}: {{this.value}}
   {{/each}}
 </ul>
+</section>
