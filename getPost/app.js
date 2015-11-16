@@ -37,7 +37,7 @@ app.post('/hw7', function(req,res){
   }
   var context = {};
   context.dataList = qParams;
-  context.bDataLust = bParams;
+  context.bDataList = bParams;
   res.render('postTemplate', context);
 });
 
