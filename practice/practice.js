@@ -30,6 +30,7 @@ app.get('/',function(req,res,next){
 
 app.post('/',function(req,res){
   var context = {};
+  var temp;
 
   if(req.body['New List']){
     req.session.name = req.body.name;
@@ -47,7 +48,7 @@ app.post('/',function(req,res){
 	request('http://api.openweathermap.org/data/2.5/weather?q=' + req.body.city + '&APPID=' + credentials.owmKey, function(err, response, body){
 	 if(!err && response.statusCode < 400){
       context.owm = JSON.parse(body);
-	  var temp = context.owm.main.temp;
+	  temp = context.owm.main.temp;
 	  console.log(context.owm.main.temp);
     } else {
       if(response){
