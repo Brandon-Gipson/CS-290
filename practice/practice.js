@@ -47,6 +47,7 @@ app.post('/',function(req,res){
 	 if(!err && response.statusCode < 400){
       context.owm = JSON.parse(body);
 	  console.log(context.owm.main.temp);
+	  res.render('owm', context);
     } else {
       if(response){
         console.log(response.statusCode);
@@ -54,7 +55,7 @@ app.post('/',function(req,res){
       next(err);
 	}
 	});
-    req.session.toDo.push({"name":req.body.name, "city":req.body.city, "temp":req.body.temp, "currentTemp":context.owm.main.temp, "id":req.session.curId});
+    req.session.toDo.push({"name":req.body.name, "city":req.body.city, "temp":req.body.temp, "id":req.session.curId});
     req.session.curId++;
   }
 

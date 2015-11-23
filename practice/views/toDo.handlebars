@@ -11,7 +11,6 @@
   {{#each toDo}}
   <li>
     <h3>{{this.name}}</h3>
-	<script> document.getElementById(name).style.color = 'red' </script>
     <form method="post">
       <input type="hidden" name="id" value="{{this.id}}">
       <input type="submit" name="Done" value="Mark as Done">
@@ -20,3 +19,5 @@
   {{/each}}
 </ul>
 {{/if}}
+
+{{owm.temp}}
