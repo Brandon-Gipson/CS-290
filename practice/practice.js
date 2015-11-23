@@ -21,22 +21,11 @@ app.get('/',function(req,res,next){
     res.render('newSession', context);
     return;
   }
-  request('http://api.openweathermap.org/data/2.5/weather?q=' + req.body.city +'&APPID=' + credentials.owmKey, function(err, response, body){
-    if(!err && response.statusCode < 400){
-      context.owm = body;
-	  context.name = req.session.name;
-	  context.toDoCount = req.session.toDo.length || 0;
-      context.toDo = req.session.toDo || [];
-      console.log(context.toDo);
-	  console.log(context.owm);
-      res.render('toDo',context);
-    } else {
-      if(response){
-        console.log(response.statusCode);
-      }
-      next(err);
-    }
-  });
+  context.name = req.session.name;
+  context.toDoCount = req.session.toDo.length || 0;
+  context.toDo = req.session.toDo || [];
+  console.log(context.toDo);
+  res.render('toDo',context);
 });
 
 app.post('/',function(req,res){
@@ -55,6 +44,16 @@ app.post('/',function(req,res){
   }
 
   if(req.body['Add Item']){
+	request('http://api.openweathermap.org/data/2.5/weather?q=' + 'req.body.city' + '&APPID=' + credentials.owmKey, function(err, response, body){
+	 if(!err && response.statusCode < 400){
+      context.owm = JSON.parse(body);
+    } else {
+      if(response){
+        console.log(response.statusCode);
+      }
+      next(err);
+	}
+	});
     req.session.toDo.push({"name":req.body.name, "city":req.body.city, "temp":req.body.temp, "id":req.session.curId});
     req.session.curId++;
   }
