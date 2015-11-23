@@ -47,7 +47,7 @@ app.post('/',function(req,res){
 	 if(!err && response.statusCode < 400){
       context.owm = JSON.parse(body);
 	  console.log(context.owm.main.temp);
-	  res.render('todo', context);
+	  res.render('toDo', context);
     } else {
       if(response){
         console.log(response.statusCode);
