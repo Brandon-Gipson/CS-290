@@ -46,7 +46,7 @@ app.post('/',function(req,res){
   if(req.body['Add Item']){
 	request('http://api.openweathermap.org/data/2.5/weather?q=' + req.body.city + '&APPID=' + credentials.owmKey, function(err, response, body){
 	 if(!err && response.statusCode < 400){
-      context.owm = JSON.parse(body);
+      context.owm = JSON.parse(body).temp;
 	  console.log(context.owm);
     } else {
       if(response){
