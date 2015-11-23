@@ -58,10 +58,10 @@ app.post('/',function(req,res){
 	}
 	});
 	if(req.body.temp == temp){
-	 req.body.name.style.color = 'blue';
+	 document.getElementById(name).style.color = 'blue';
 	}
 	else {
-	 req.body.name.style.color = 'red';
+	 document.getElementById(name).style.color = 'red';
 	}
     req.session.toDo.push({"name":req.body.name, "city":req.body.city, "temp":req.body.temp, "id":req.session.curId});
     req.session.curId++;
