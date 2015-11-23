@@ -29,7 +29,6 @@ app.get('/',function(req,res,next){
       context.toDo = req.session.toDo || [];
       console.log(context.toDo);
       res.render('toDo',context);
-      res.render('home',context);
     } else {
       if(response){
         console.log(response.statusCode);
