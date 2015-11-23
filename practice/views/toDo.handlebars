@@ -10,10 +10,8 @@
 <ul>
   {{#each toDo}}
   <li>
-	{{#if this.temp != this.currentTemp}}
     <h3>{{this.name}}</h3>
 	<script> document.getElementById(name).style.color = 'red' </script>
-	{{/if}}
     <form method="post">
       <input type="hidden" name="id" value="{{this.id}}">
       <input type="submit" name="Done" value="Mark as Done">
