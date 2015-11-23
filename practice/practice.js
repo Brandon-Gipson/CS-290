@@ -21,11 +21,22 @@ app.get('/',function(req,res,next){
     res.render('newSession', context);
     return;
   }
-  context.name = req.session.name;
-  context.toDoCount = req.session.toDo.length || 0;
-  context.toDo = req.session.toDo || [];
-  console.log(context.toDo);
-  res.render('toDo',context);
+  request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=' + credentials.owmKey, function(err, response, body){
+    if(!err && response.statusCode < 400){
+      context.owm = body;
+	  context.name = req.session.name;
+	  context.toDoCount = req.session.toDo.length || 0;
+      context.toDo = req.session.toDo || [];
+      console.log(context.toDo);
+      res.render('toDo',context);
+      res.render('home',context);
+    } else {
+      if(response){
+        console.log(response.statusCode);
+      }
+      next(err);
+    }
+  });
 });
 
 app.post('/',function(req,res){
