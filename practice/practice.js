@@ -47,6 +47,7 @@ app.post('/',function(req,res){
 	request('http://api.openweathermap.org/data/2.5/weather?q=' + req.body.city + '&APPID=' + credentials.owmKey, function(err, response, body){
 	 if(!err && response.statusCode < 400){
       context.owm = JSON.parse(body);
+	  var temp = context.owm.main.temp;
 	  console.log(context.owm.main.temp);
     } else {
       if(response){
@@ -55,7 +56,7 @@ app.post('/',function(req,res){
       next(err);
 	}
 	});
-	if(req.body.temp == context.owm.main.temp){
+	if(req.body.temp == temp){
 	 req.body.name.style.color = 'blue';
 	}
 	else {
