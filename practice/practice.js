@@ -28,6 +28,7 @@ app.get('/',function(req,res,next){
 	  context.toDoCount = req.session.toDo.length || 0;
       context.toDo = req.session.toDo || [];
       console.log(context.toDo);
+	  console.log(context.owm;
       res.render('toDo',context);
     } else {
       if(response){
