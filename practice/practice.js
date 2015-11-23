@@ -56,7 +56,7 @@ app.post('/',function(req,res){
       next(err);
 	}
 	});
-    req.session.toDo.push({"name":req.body.name, "city":req.body.city, "temp":req.body.temp, "currentTemp":req.body.currentTemp "id":req.session.curId});
+    req.session.toDo.push({"name":req.body.name, "city":req.body.city, "temp":req.body.temp, "currentTemp":req.body.currentTemp, "id":req.session.curId});
     req.session.curId++;
   }
 
