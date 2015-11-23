@@ -30,7 +30,7 @@ app.get('/',function(req,res,next){
 
 app.post('/',function(req,res){
   var context = {};
-  var temp;
+  var currentTemp;
 
   if(req.body['New List']){
     req.session.name = req.body.name;
