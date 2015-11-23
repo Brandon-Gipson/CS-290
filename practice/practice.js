@@ -21,7 +21,7 @@ app.get('/',function(req,res,next){
     res.render('newSession', context);
     return;
   }
-  request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=' + credentials.owmKey, function(err, response, body){
+  request('http://api.openweathermap.org/data/2.5/weather?q=' + req.body.city +'&APPID=' + credentials.owmKey, function(err, response, body){
     if(!err && response.statusCode < 400){
       context.owm = body;
 	  context.name = req.session.name;
