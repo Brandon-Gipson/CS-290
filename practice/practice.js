@@ -30,7 +30,6 @@ app.get('/',function(req,res,next){
 
 app.post('/',function(req,res){
   var context = {};
-  var currentTemp;
 
   if(req.body['New List']){
     req.session.name = req.body.name;
@@ -48,6 +47,7 @@ app.post('/',function(req,res){
 	request('http://api.openweathermap.org/data/2.5/weather?q=' + req.body.city + '&APPID=' + credentials.owmKey, function(err, response, body){
 	 if(!err && response.statusCode < 400){
       context.owm = JSON.parse(body);
+	  req.body.currentTemp = context.owm.main.temp;
 	  console.log(context.owm.main.temp);
     } else {
       if(response){
@@ -56,7 +56,7 @@ app.post('/',function(req,res){
       next(err);
 	}
 	});
-    req.session.toDo.push({"name":req.body.name, "city":req.body.city, "temp":req.body.temp, "currentTemp":context.owm.main.temp, "id":req.session.curId});
+    req.session.toDo.push({"name":req.body.name, "city":req.body.city, "temp":req.body.temp, "currentTemp":req.body.currentTemp "id":req.session.curId});
     req.session.curId++;
   }
 
