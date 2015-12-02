@@ -30,7 +30,7 @@ app.post('/match',function(req,res){
 	  console.log(context.summoner);
 	  var bParams = [];
 	  for (var p in body) {
-		  bParams.push({'name':p, 'id':body[b]})
+		  bParams.push({'name':p, 'id':body[p]})
 	  }
 	  console.log(bParams);
     } else {
