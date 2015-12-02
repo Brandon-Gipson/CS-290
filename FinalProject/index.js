@@ -18,12 +18,12 @@ app.get('/champions',function(req,res){
   res.render('champions');
 });
 
-app.get('/items',function(req,res){
-  res.render('items');
+app.get('/setup',function(req,res){
+  res.render('setup');
 });
 
-app.get('/matchhistory',function(req,res){
-  res.render('matchhistory');
+app.get('/match',function(req,res){
+  res.render('match');
 });
 
 app.get('/conclusion',function(req,res){
