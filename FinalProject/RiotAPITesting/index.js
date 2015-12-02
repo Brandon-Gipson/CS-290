@@ -32,7 +32,8 @@ app.post('/matchhistory',function(req,res){
 	});
 	
   res.render('matchhistory', context);
-};}
+}
+}
 
 app.use(function(req,res){
   res.status(404);
