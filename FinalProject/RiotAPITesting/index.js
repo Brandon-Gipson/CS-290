@@ -3,7 +3,6 @@ var express = require('express');
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
-var session = require('express-session');
 var request = require('request');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,6 +28,10 @@ app.post('/match',function(req,res){
 	 if(!err && response.statusCode < 400){
       context.summoner = JSON.parse(body);
 	  console.log(context.summoner);
+	  request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + context.summoner + '?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, reponse, body) {
+		  context.match = JSON.parse(body);
+		  console.log(context.match);
+	  });
 	 
     } else {
      if(response){
