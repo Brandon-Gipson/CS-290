@@ -33,7 +33,7 @@ app.post('/match',function(req,res){
 	  console.log(summonerID);
 	  request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + summonerID + '?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, response, body){
 		  var matchList = JSON.parse(body);
-		  console.log(matchlist);
+		  console.log(matchList);
 	  });
 		  
 	  
