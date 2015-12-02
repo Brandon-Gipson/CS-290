@@ -19,14 +19,12 @@
 	Again it is pretty straight forward and looks a lot like the prvious request. Now heading right back to where we left
 	off last time let's look at what we need to do our previous request to make it usable in our new request:
 	<br>
-	<br>
 	<pre><code>
 	  var summoner = JSON.parse(body);
 	  for (i in summoner){
 		  var summonerID = summoner[i]["id"];
 	  }
 	</code></pre>
-	<br>
 	<br>
 	Let's take a closer look at what this is doing. First we have the line <code> var summoner = JSON.parse(body); </code>. Essentially this takes
 	the information sent back to us from Riot and houses it in a variable called summoner. Next part of the the code cycles through that variable
@@ -36,19 +34,15 @@
 	need to search for more than one summoner at a time so the above code is designed to work for onle one. The next step in building our match
 	history looks much like the prvious step:
 	<br>
-	<br>
 	<pre><code>
 	request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + summonerID + '?api_key={my api key}', function(err, response, body){
       var matchList = JSON.parse(body);});
 	</code></pre>
 	<br>
-	<br>
 	Basically all we are doing is using the previously created summonerID variable in this request. What this will return is the following:
 	<br>
-	<br>
 	<pre><code>
-	{
-   "matches": [
+   {"matches": [
       {
          "timestamp": 1439450312819,
          "champion": 222,
@@ -61,7 +55,6 @@
          "lane": "BOTTOM"
       }, ....
 	</code></pre>
-	<br>
 	<br>
 	This will repeat over and over for each individual match in your match history giving you access to a lot of information. Next up I'll show you what you can do with all
 	this data. Click next to continue.

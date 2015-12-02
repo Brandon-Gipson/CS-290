@@ -42,17 +42,14 @@
 	of this how-to. When my handler detects that a summoner's name has been entered it sends a request to the
 	Riot servers that looks like this:
 	<br>
-	<br>
 	<pre><code>
 	request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ req.body.name +'?api_key={my api key}', function(err, response, body){
 	 if(!err && response.statusCode < 400){...
 	</code></pre>
 	<br>
-	<br>
 	This pretty much mirrors what we talked about above and is pretty straight forward. "req.body.name" is information from my form aka 
 	the summoner name and "{my api key}" is my literal API key without the brackets. When we send this off to Riot
 	we get an object back that looks like this:
-	<br>
 	<br>
 	<pre><code>
    {"eboncross": {
@@ -63,7 +60,6 @@
    "summonerLevel": 30
 	}}
 	</code></pre>
-	<br>
 	<br>
 	What are we looking at here? Well what we have is an object named "eboncross" which is the search term we used. 
 	This object contains other references or foreign keys that we could then use in other queries such as my
