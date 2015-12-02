@@ -32,6 +32,7 @@
 	It does get a bit complicated however when we try to implement them. Will get to that in a minute though.
 	First let's go over what we put in the request and what we can expect back.
 	<br>
+	<br>
 	In the case of both requests the accepted format for the sent data is a simple string. When you go to 
 	enter a summoner's name or their id you just use a string or an int respectively. What each request sends
 	back is a JSON object chalk full of information. So let's look at an example of how to retrience on of
@@ -43,14 +44,17 @@
 	of this how-to. When my handler detects that a summoner's name has been entered it sends a request to the
 	Riot servers that looks like this:
 	<br>
+	<br>
 	<code>
 	request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ req.body.name +'?api_key={my api key}', function(err, response, body){
 	 if(!err && response.statusCode < 400){...
 	</code>
 	<br>
+	<br>
 	This pretty much mirrors what we talked about above and is pretty straight forward. "req.body.name" is information from my form aka 
 	the summoner name and "{my api key}" is my literal API key without the brackets. When we send this off to Riot
 	we get an object back that looks like this:
+	<br>
 	<br>
 	<code>
 	{"eboncross": {
@@ -62,18 +66,21 @@
 	}}
 	</code>
 	<br>
+	<br>
 	What are we looking at here? Well what we have is an object named "eboncross" which is the search term we used. 
 	This object contains other references or foreign keys that we could then use in other queries such as my
 	summoner id "19089071", the id for the profile icon I use, etc. Pretty easy to understand naming conventions
 	have been used.	Now if I wanted to use any information from this object in another request (and we do) I 
 	would have to something like this:
 	<br>
-	<code>
+	<br>
+	<pre><code>
 	  var summoner = JSON.parse(body);
 	  for (i in summoner){
 		  var summonerID = summoner[i]["id"];
 	  }
-	</code>
+	</code></pre>
+	<br>
 	<br>
 	</p>
 	<button class="next" onclick="location.href='http://52.88.56.252:3001/champions'">Next</button>
