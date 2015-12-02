@@ -92,20 +92,37 @@
 	<br>
 	<br>
 	<pre><code>
-	request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + summonerID + '?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, response, body){
+	request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + summonerID + '?api_key={my api key}', function(err, response, body){
       var matchList = JSON.parse(body);});
 	</code></pre>
-	</br>
+	<br>
+	<br>
+	Basically all we are doing is using the previously created summonerID variable in this request. What this will return is the following:
+	<br>
+	<br>
+	<pre><code>
+	{
+   "matches": [
+      {
+         "timestamp": 1439450312819,
+         "champion": 222,
+         "region": "NA",
+         "queue": "RANKED_SOLO_5x5",
+         "season": "SEASON2015",
+         "matchId": 1917929861,
+         "role": "DUO_CARRY",
+         "platformId": "NA1",
+         "lane": "BOTTOM"
+      }, ....
+	</code></pre>
+	<br>
+	<br>
+	This will repeat over and over for each individual match in your match history. Now what you can do with this is vast. You can take one of the
+	variable such as the matchID, assign it to a variable like we did above with the summoner id, and use that in a request to get that matches
+	specific information. You can then take that info and create a gorgeous match history website. I'm not going to walk you through those steps
+	as they are basically just repeating what I've already shown you here. I will, however, show you how to get basic champion information so
+	click next to continue.
 	</p>
 	<button class="next" onclick="location.href='http://52.88.56.252:3001/champions'">Next</button>
 </div>
 
-
-
-	<br>
-	<code>
-	request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + summonerID + '?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, response, body){
-		  var matchList = JSON.parse(body);});
-	</code>
-	</br>
-		  
