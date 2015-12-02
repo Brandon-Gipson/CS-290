@@ -15,8 +15,18 @@
 	LoL website has. This part of the guide aims to show you how to build your own match history and what
 	you can do with it. Primarily we access Riot's API through get requests sent to their servers. What
 	this request looks like changes based on what information we are trying to get but usually takes on
-	a specific form each time.
+	a specific form each time:
+	<br>
 	<code>https://{region}.api.pvp.net/api/lol/{region}/{request specific pathing}/{search term}?api_key={your api key} </code>
+	<br>
+	The first bracketed component is pretty straight forward. League of Legends is a multi-region game so
+    you must specify which one you'd like. Next up is the {request specific pathing} which denotes what
+	type of data we are looking form. This is the part that can look the most diverse depending on the 
+	data we seek. For the purpose of building a match history we will be looking at two specifically:
+	<ul>
+		<li><code>/api/lol/na/v1.4/summoner/by-name/{summonerNames}</code> and
+		<li><code>/api/lol/na/v2.2/matchlist/by-summoner/{summonerId}</code>
+	</ul>
 	</p>
 	<button class="next" onclick="location.href='http://52.88.56.252:3001/champions'">Next</button>
 </div>
