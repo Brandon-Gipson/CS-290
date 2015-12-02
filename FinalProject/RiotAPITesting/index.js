@@ -22,14 +22,23 @@ app.get('/match',function(req,res){
 app.post('/match',function(req,res){
 	var context = {};
 	console.log(req.body);
-	 request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ req.body.summonerName +'?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, response, body){
-		 context.summoner = JSON.parse(body);
-		 console.log(context.summoner);
-	});
+	//if(req.body['summoner']){
+	// request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ req.body.summonerName +'?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, response, body){
+	// if(!err && response.statusCode < 400){
+   //   context.summoner = JSON.parse(body);
+	//  console.log(context.summoner);
+	 
+  //  } else {
+  //    if(response){
+ //       console.log(response.statusCode);
+ //     }
+      next(err);
+//	}
+//	});
 	
   res.render('match', context);
+}
 });
-
 
 app.use(function(req,res){
   res.status(404);
