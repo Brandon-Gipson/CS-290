@@ -26,10 +26,10 @@ app.post('/match',function(req,res){
 	if(req.body['summoner']){
 	request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ req.body.name +'?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, response, body){
 	 if(!err && response.statusCode < 400){
-      context.summoner = JSON.parse(body);
-	  console.log(context.summoner);
-	  for( var i in body) {
-		  console.log(body[i]["id"]);
+      var summoner = JSON.parse(body);
+	  console.log(summoner);
+	  for( var i in summoner) {
+		  console.log(summoner[i]["id"]);
 	  }
     } else {
      if(response){
