@@ -28,11 +28,9 @@ app.post('/match',function(req,res){
 	 if(!err && response.statusCode < 400){
       context.summoner = JSON.parse(body);
 	  console.log(context.summoner);
-	  var bParams = [];
-	  for (var p in body) {
-		  bParams.push({'name':p, 'id':body[p]})
+	  for( var i in body) {
+		  console.log(body[i]["id"]);
 	  }
-	  console.log(bParams);
     } else {
      if(response){
        console.log(response.statusCode);
