@@ -24,17 +24,21 @@ app.post('/match',function(req,res){
 	var context = {};
 	console.log(req.body);
 	if(req.body['summoner']){
-	context = request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ req.body.name +'?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, response, body){
+	request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ req.body.name +'?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, response, body){
+	 if(!err && response.statusCode < 400){
+      context.summoner = body;
+	  console.log(context.summoner);
+	  request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + body.id + '?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, reponse, body) {
+		  context.match = body;
+		  console.log(context.match);
+	  });
 	 
+    } else {
      if(response){
        console.log(response.statusCode);
       }
       next(err);
-	});
-	console.log(context);
-	request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + context.id + '?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, reponse, body, context) {
-		  context.match = body;
-		  console.log(context.match);
+	}
 	});
 	
   res.render('match', context);
