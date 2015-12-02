@@ -7,14 +7,17 @@
 </div>
 
 <div>
-	<h1>Getting Summoner Information</hi>
+	<h1>Getting the Match History</hi>
 	<br>
-	<h3>A Quick Note on Match History</h3>
 	<p>
-<li><code>/api/lol/na/v2.2/matchlist/by-summoner/{summonerId}</code>
-
-Now if I wanted to use any information from this object in another request (and we do) I 
-	would have to something like this:
+	In this section of the guide we are going to look at how to make a request for a particular summoner's match history
+	based on the summoner information we recieved from our last request. Specifically we will be using the summoer's id.
+	As a preview this is the request format we will be using this time:
+	<ul>
+		<li><code>/api/lol/na/v2.2/matchlist/by-summoner/{summonerId}</code>
+	</ul>
+	Again it is pretty straight forward and looks a lot like the prvious request. Now heading right back to where we left
+	off last time let's look at what we need to do our previous request to make it usable in our new request:
 	<br>
 	<br>
 	<pre><code>
@@ -60,11 +63,8 @@ Now if I wanted to use any information from this object in another request (and 
 	</code></pre>
 	<br>
 	<br>
-	This will repeat over and over for each individual match in your match history. Now what you can do with this is vast. You can take one of the
-	variable such as the matchID, assign it to a variable like we did above with the summoner id, and use that in a request to get that matches
-	specific information. You can then take that info and create a gorgeous match history website. I'm not going to walk you through those steps
-	as they are basically just repeating what I've already shown you here. I will, however, show you how to get basic champion information so
-	click next to continue.
+	This will repeat over and over for each individual match in your match history giving you access to a lot of information. Next up I'll show you what you can do with all
+	this data. Click next to continue.
 	
 		</p>
 	<button class="next" onclick="location.href='http://52.88.56.252:3001/conclusion'">Next</button>
