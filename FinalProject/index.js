@@ -16,19 +16,19 @@ app.get('/',function(req,res){
 });
 
 app.get('/champions',function(req,res){
-  res.render('champions', context);
+  res.render('champions');
 });
 
 app.get('/items',function(req,res){
-  res.render('items', context);
+  res.render('items');
 });
 
 app.get('/matchhistory',function(req,res){
-  res.render('matchhistory', context);
+  res.render('matchhistory');
 });
 
 app.get('/conclusion',function(req,res){
-  res.render('conclusion', context);
+  res.render('conclusion');
 });
 
 app.use(function(req,res){
