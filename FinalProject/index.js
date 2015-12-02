@@ -14,16 +14,16 @@ app.get('/',function(req,res){
   res.render('home');
 });
 
-app.get('/champions',function(req,res){
-  res.render('champions');
-});
-
 app.get('/setup',function(req,res){
   res.render('setup');
 });
 
-app.get('/match',function(req,res){
-  res.render('match');
+app.get('/summonerInfo',function(req,res){
+  res.render('summonerInfo');
+});
+
+app.get('/matchHistory',function(req,res){
+  res.render('matchHistory');
 });
 
 app.get('/conclusion',function(req,res){

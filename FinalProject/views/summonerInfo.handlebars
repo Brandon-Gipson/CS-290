@@ -1,0 +1,76 @@
+<div class="links">
+<a href="http://52.88.56.252:3001">Home</a>
+<a href="http://52.88.56.252:3001/setup">Set Up</a>
+<a href="http://52.88.56.252:3001/summonerInfo">Getting Summoner Info</a>
+<a href="http://52.88.56.252:3001/matchHistory">Getting Match History</a>
+<a href="http://52.88.56.252:3001/conclusion">What's Next?</a>
+</div>
+
+<div>
+	<h1>Getting Summoner Information</hi>
+	<br>
+	<h3>A Quick Note on Match History</h3>
+	<p>
+	Match History is something everyone cares about in League of Legends and something that every good
+	LoL website has. This part of the guide aims to show you how to build your own match history and what
+	you can do with it. I've split this into two easy to follow parts. The first is this page which covers
+	how to retrieve a player's summoner information. The second is the next page which will focus on how to
+	use that information to retrieve a match history.
+	<br>
+	<br>
+	<h3>On to the show</h3>
+	Primarily we access Riot's API through get requests sent to their servers. What
+	this request looks like changes based on what information we are trying to get but usually takes on
+	a specific form each time:
+	<br>
+	<code>https://{region}.api.pvp.net/api/lol/{region}/{request specific pathing}/{search term}?api_key={your api key} </code>
+	<br>
+	The first bracketed component is pretty straight forward. League of Legends is a multi-region game so
+    you must specify which one you'd like. Next up is the {request specific pathing} which denotes what
+	type of data we are looking form. This is the part that can look the most diverse depending on the 
+	data we seek. For the purpose of retrieving a summoner's information we will be looking at this one:
+	<ul>
+		<li><code>/api/lol/na/v1.4/summoner/by-name/{summonerNames}</code> and
+	</ul>
+	It's not too scary to look at and should be pretty straight forward. Basically it takes in a string of the summoner's
+	name sends back a JSON object chalk full of information. So let's look at an example of how to retrieve one of
+	these objects from riot.
+	<br>
+	So to start I'm going to use my own summoner name "Eboncross" to demonstrate how we'd retrieve the summoner
+	data. Now the way that I ended up getting user input was by use of a form which submits post data back to 
+	the page with my inputed summoner name. I'm going to skip all of that though as it's not really in the scope
+	of this how-to. When my handler detects that a summoner's name has been entered it sends a request to the
+	Riot servers that looks like this:
+	<br>
+	<br>
+	<pre><code>
+	request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ req.body.name +'?api_key={my api key}', function(err, response, body){
+	 if(!err && response.statusCode < 400){...
+	</code></pre>
+	<br>
+	<br>
+	This pretty much mirrors what we talked about above and is pretty straight forward. "req.body.name" is information from my form aka 
+	the summoner name and "{my api key}" is my literal API key without the brackets. When we send this off to Riot
+	we get an object back that looks like this:
+	<br>
+	<br>
+	<pre><code>
+   {"eboncross": {
+   "id": 19089071,
+   "name": "Eboncross",
+   "profileIconId": 592,
+   "revisionDate": 1449036186000,
+   "summonerLevel": 30
+	}}
+	</code></pre>
+	<br>
+	<br>
+	What are we looking at here? Well what we have is an object named "eboncross" which is the search term we used. 
+	This object contains other references or foreign keys that we could then use in other queries such as my
+	summoner id "19089071", the id for the profile icon I use, etc. Pretty easy to understand naming conventions
+	have been used.	Next up is to show how we take this object and turn into something we can actually use with other
+	requests. Click the next button to continue.
+	</p>
+	<button class="next" onclick="location.href='http://52.88.56.252:3001/matchHistory'">Next</button>
+</div>
+

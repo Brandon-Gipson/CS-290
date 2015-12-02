@@ -1,0 +1,71 @@
+<div class="links">
+<a href="http://52.88.56.252:3001">Home</a>
+<a href="http://52.88.56.252:3001/setup">Set Up</a>
+<a href="http://52.88.56.252:3001/summonerInfo">Getting Summoner Info</a>
+<a href="http://52.88.56.252:3001/matchHistory">Getting Match History</a>
+<a href="http://52.88.56.252:3001/conclusion">What's Next?</a>
+</div>
+
+<div>
+	<h1>Getting Summoner Information</hi>
+	<br>
+	<h3>A Quick Note on Match History</h3>
+	<p>
+<li><code>/api/lol/na/v2.2/matchlist/by-summoner/{summonerId}</code>
+
+Now if I wanted to use any information from this object in another request (and we do) I 
+	would have to something like this:
+	<br>
+	<br>
+	<pre><code>
+	  var summoner = JSON.parse(body);
+	  for (i in summoner){
+		  var summonerID = summoner[i]["id"];
+	  }
+	</code></pre>
+	<br>
+	<br>
+	Let's take a closer look at what this is doing. First we have the line <code> var summoner = JSON.parse(body); </code>. Essentially this takes
+	the information sent back to us from Riot and houses it in a variable called summoner. Next part of the the code cycles through that variable
+	to create a new house called summonerID for my summoner's id. Now what I didn't mention before is that you can actually use the request to search
+	for multiple summoners at a time. This is why the object returned from Riot uses our search term as a name. It is possible to get multiple 
+	objects each representing a different summoner. This is also why we must us a loop to create the new variable. There is often a time you would
+	need to search for more than one summoner at a time so the above code is designed to work for onle one. The next step in building our match
+	history looks much like the prvious step:
+	<br>
+	<br>
+	<pre><code>
+	request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + summonerID + '?api_key={my api key}', function(err, response, body){
+      var matchList = JSON.parse(body);});
+	</code></pre>
+	<br>
+	<br>
+	Basically all we are doing is using the previously created summonerID variable in this request. What this will return is the following:
+	<br>
+	<br>
+	<pre><code>
+	{
+   "matches": [
+      {
+         "timestamp": 1439450312819,
+         "champion": 222,
+         "region": "NA",
+         "queue": "RANKED_SOLO_5x5",
+         "season": "SEASON2015",
+         "matchId": 1917929861,
+         "role": "DUO_CARRY",
+         "platformId": "NA1",
+         "lane": "BOTTOM"
+      }, ....
+	</code></pre>
+	<br>
+	<br>
+	This will repeat over and over for each individual match in your match history. Now what you can do with this is vast. You can take one of the
+	variable such as the matchID, assign it to a variable like we did above with the summoner id, and use that in a request to get that matches
+	specific information. You can then take that info and create a gorgeous match history website. I'm not going to walk you through those steps
+	as they are basically just repeating what I've already shown you here. I will, however, show you how to get basic champion information so
+	click next to continue.
+	
+		</p>
+	<button class="next" onclick="location.href='http://52.88.56.252:3001/conclusion'">Next</button>
+</div>
