@@ -57,7 +57,7 @@
 	<br>
 	<br>
 	<pre><code>
-	{"eboncross": {
+   {"eboncross": {
    "id": 19089071,
    "name": "Eboncross",
    "profileIconId": 592,
@@ -82,6 +82,20 @@
 	</code></pre>
 	<br>
 	<br>
+	Let's take a closer look at what this is doing. First we have the line <code> var summoner = JSON.parse(body); </code>. Essentially this takes
+	the information sent back to us from Riot and houses it in a variable called summoner. Next part of the the code cycles through that variable
+	to create a new house called summonerID for my summoner's id. Now what I didn't mention before is that you can actually use the request to search
+	for multiple summoners at a time. This is why the object returned from Riot uses our search term as a name. It is possible to get multiple 
+	objects each representing a different summoner. This is also why we must us a loop to create the new variable. There is often a time you would
+	need to search for more than one summoner at a time so the above code is designed to work for onle one. The next step in building our match
+	history looks much like the prvious step:
+	<br>
+	<br>
+	<pre><code>
+	request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + summonerID + '?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, response, body){
+      var matchList = JSON.parse(body);});
+	</code></pre>
+	</br>
 	</p>
 	<button class="next" onclick="location.href='http://52.88.56.252:3001/champions'">Next</button>
 </div>
