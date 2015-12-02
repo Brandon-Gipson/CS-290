@@ -1,5 +1,6 @@
 var express = require('express');
-
+var jQuery = require('jQuery');
+var bootstrap = require('bootstrap');
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
