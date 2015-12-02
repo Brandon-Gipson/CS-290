@@ -30,6 +30,7 @@ app.post('/matchhistory',function(req,res){
       next(err);
 	}
 	});
+	
   res.render('matchhistory', context);
 };}
 
@@ -44,7 +45,6 @@ app.use(function(err, req, res, next){
   res.status(500);
   res.render('500');
 });
-
 
 
 app.listen(app.get('port'), function(){
