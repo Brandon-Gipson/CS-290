@@ -45,10 +45,10 @@
 	Riot servers that looks like this:
 	<br>
 	<br>
-	<code>
+	<pre><code>
 	request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ req.body.name +'?api_key={my api key}', function(err, response, body){
 	 if(!err && response.statusCode < 400){...
-	</code>
+	</code></pre>
 	<br>
 	<br>
 	This pretty much mirrors what we talked about above and is pretty straight forward. "req.body.name" is information from my form aka 
@@ -56,7 +56,7 @@
 	we get an object back that looks like this:
 	<br>
 	<br>
-	<code>
+	<pre><code>
 	{"eboncross": {
    "id": 19089071,
    "name": "Eboncross",
@@ -64,7 +64,7 @@
    "revisionDate": 1449036186000,
    "summonerLevel": 30
 	}}
-	</code>
+	</code></pre>
 	<br>
 	<br>
 	What are we looking at here? Well what we have is an object named "eboncross" which is the search term we used. 
