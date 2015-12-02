@@ -28,6 +28,7 @@ app.post('/match',function(req,res){
 	 if(!err && response.statusCode < 400){
       context.summoner = JSON.parse(body);
 	  summonerID = context.summoner.id
+	  console.log(summonerID);
 	  console.log(context.summoner);
 	  request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + summonerID + '?api_key=05d6825e-a0c3-40e7-bdfa-475b4d8d7b56', function(err, reponse, body) {
 		  context.match = JSON.parse(body);
