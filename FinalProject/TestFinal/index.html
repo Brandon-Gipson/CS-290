@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>How-To Use Riot's API</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i>  <span class="light">Back to</span> Home
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#setup">Set Up</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#summonerInfo">Summoner Info</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#matchHistory">Match History</a>
+                    </li>
+					<li>
+                        <a class="page-scroll" href="#conclusion">What's Next?</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Riot Games How-To</h1>
+                        <p class="intro-text">A short guide<br>to using Riot's API</p>
+                        <a href="#intro" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="intro" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>About this guide</h2>
+                <p>This guide is meant to be a basic introduction to API provide by Riot Games for League of Legends.
+				As such this guide will not cover everything nor will it cover the basic set up of your programming environment.
+				<br>This guide will primarily show you how to:</p>
+				<ul>
+					<li>Retrieve your api key from Riot
+					<li>Make calls to retrieve a player's (summoner's) information based on their name
+					<li>Make calls to retrieve a summoner's match history based on the information retrieved from the last request
+					<li>Give you an idea of what to do with all of this information
+				</ul>
+				<br>
+				<p>There is a lot of data we could retrieve from the Riot servers which can be manipulated in many different ways.
+				Focusing on these basics will provide you with a good platform and general knowledge to create more complex
+				websites using this API.</p>
+            </div>
+        </div>
+    </section>
+	
+	<!-- Set Up Section -->
+    <section id="setup" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Set Up</h2>
+                <p> Everything we will do in this guide requires a very special object that you can only get from Riot themselves.
+					This is the magical API key. It is pretty much exactly what it sounds like. Picture the Riot API being locked 
+					behind a digital door. Well the API key is how we unlock that door. So where do we get this key? Well that's 
+					easy. First go to this <a href="https://developer.riotgames.com/">link</a>. You should see a page that looks like this:</p>
+				<br>
+				<br>
+				<img src="http://i.imgur.com/qVNqOi5.jpg?1"/>
+				<br>
+				<br>
+				<p>Next up click on the sign in link at the top right corner of the page. <br> It should bring up a link that looks like this:</p>
+				<br>
+				<br>
+				<img src="http://i.imgur.com/duvG7LM.png?1"/>
+				<br>
+				<br>
+				<p>At this point if you already have a League of Legends account you can just log in with the same information. If not go]
+				   ahead and click on the registrations page link. This will take you to a page where you can register a League of Legends
+				   account. Once you sign up or sign in you should be given an API key:</p>
+				<br>
+				<br>
+				<img src="http://i.imgur.com/0CAoxBx.jpg?1"/>
+				<br>
+				<br>
+				<p>I've taken out my own key from this image but it'll be right next to where it says "Key:".
+					Now that you have your API key in hand you are ready to tackle some real coding applictions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summoner Info Section -->
+    <section id="summonerInfo" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h3>A Short Interlude</h3>
+                    <p> Match History is something everyone cares about in League of Legends and something that every good
+						LoL website has. This part of the guide aims to show you how to build your own match history and what
+						you can do with it. I've split this into two easy to follow parts. The first is this page which covers
+						how to retrieve a player's summoner information. The second is the next page which will focus on how to
+						use that information to retrieve a match history. </p>
+					<br>
+					<h3>Summoner Info</h3>
+					<p> Primarily we access Riot's API through get requests sent to their servers. What
+						this request looks like changes based on what information we are trying to get but usually takes on
+						a specific form each time: </p>
+					<code>https://{region}.api.pvp.net/api/lol/{region}/{request specific pathing}/{search term}?api_key={your api key} </code>
+					<p> The first bracketed component is pretty straight forward. League of Legends is a multi-region game so
+						you must specify which one you'd like. Next up is the {request specific pathing} which denotes what
+						type of data we are looking form. This is the part that can look the most diverse depending on the 
+						data we seek. For the purpose of retrieving a summoner's information we will be looking at this one:</p>
+					<code>/api/lol/na/v1.4/summoner/by-name/{summonerNames}</code>
+					<p> It's not too scary to look at and should be pretty straight forward. Basically it takes in a string of the summoner's
+						name sends back a JSON object chalk full of information. So let's look at an example of how to retrieve one of
+						these objects from riot.</p>
+					<p> So to start I'm going to use my own summoner name "Eboncross" to demonstrate how we'd retrieve the summoner
+						data. Now the way that I ended up getting user input was by use of a form which submits post data back to 
+						the page with my inputed summoner name. I'm going to skip all of <br>that though as it's not really in the scope
+						of this how-to. When my handler detects that a summoner's name has been entered it sends a request to the
+						Riot servers that looks like this: </p>
+					<code> request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+ req.body.name +'?api_key={my api key}', function(err, response, body){...} </code>
+					<p> This pretty much mirrors what we talked about above and is pretty straight forward. "req.body.name" is information from my form aka 
+						the summoner name and "{my api key}" is my literal API key without the brackets. When we send this off to Riot
+						we get an object back that looks like this:</p>
+					<code>
+						{"eboncross": {<br>
+						"id": 19089071,<br>
+						"name": "Eboncross",<br>
+						"profileIconId": 592,<br>
+						"revisionDate": 1449036186000,<br>
+						"summonerLevel": 30}} </code>
+					<p> What are we looking at here? Well what we have is an object named "eboncross" which is the search term we used. 
+						This object contains other references or foreign keys that we could then use in other queries such as my
+						summoner id "19089071", the id for the profile icon I use, etc. Pretty easy to understand naming conventions
+						have been used.	</p><p>Next up is to show how we take this object and turn into something we can actually use with other requests.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Match History Section -->
+    <section id="matchHistory" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Getting the Match History</h2>
+               <p> In this section of the guide we are going to look at how to make a request for a particular summoner's match history
+				   based on the summoner information we recieved from our last request. Specifically we will be using the summoer's id.
+				   As a preview this is the request format we will be using this time: </p>
+				<code>/api/lol/na/v2.2/matchlist/by-summoner/{summonerId}</code>
+				<p> Again it is pretty straight forward and looks a lot like the prvious request. Now heading right back to where we left
+					off last time let's look at what we need to do our previous request to make it usable in our new request: </p>
+				<code> var summoner = JSON.parse(body); <br>
+					   for (i in summoner){ <br>
+					   var summonerID = summoner[i]["id"];} </code>
+				<p> Let's take a closer look at what this is doing. First we have the line <code> var summoner = JSON.parse(body); </code>. Essentially this takes
+					the information sent back to us from Riot and houses it in a variable called summoner. Next part of the the code cycles through that variable
+					to create a new house called summonerID for my summoner's id. Now what I didn't mention before is that you can actually use the request to search
+					for multiple summoners at a time. This is why the object returned from Riot uses our search term as a name. It is possible to get multiple 
+					objects each representing a different summoner. This is also why we must us a loop to create the new variable. There is often a time you would
+					need to search for more than one summoner at a time so the above code is designed to work for onle one. The next step in building our match
+					history looks much like the prvious step: </p>
+				<code> request('https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/' + summonerID + '?api_key={my api key}', function(err, response, body){});</code>
+				<p> Basically all we are doing is using the previously created summonerID variable in this request. What this will return is the following:</p>
+				<code> {"matches": [ {<br>
+						"timestamp": 1439450312819,<br>
+						"champion": 222,<br>
+						"region": "NA",<br>
+						"queue": "RANKED_SOLO_5x5",<br>
+						"season": "SEASON2015",<br>
+						"matchId": 1917929861,<br>
+						"role": "DUO_CARRY",<br>
+						"platformId": "NA1",<br>
+						"lane": "BOTTOM"}, ....</code>
+				<p> This will repeat over and over for each individual match in your match history giving you access to a lot of information. Next up I'll show you what you can do with all this data.</p>
+            </div>
+        </div>
+    </section>
+	
+	<!-- Conclusion Section -->
+    <section id="conclusion" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Now What?</h2>
+                <p> Basically what I have shown you today is how to make a request to Riot's API for data and then
+				    how to use that data in future reqeusts. It doesn't seem like much but really it's the basic 
+					foundation for everything the Riot API allows you to do. For example you can now take the 
+					matchID information you pulled from the match history request and make another request to
+					<code>/api/lol/na/v2.2/match/{matchId}</code> to get the specific match details. If you keep
+					using these building blocks eventually you can make an awesome website like <a href="http://www.lolking.com">lolking.com</a>
+					which is etirely based on what I just showed you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright Brandon Gipson &copy; 2014</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+
+</body>
+
+</html>
