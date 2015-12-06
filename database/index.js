@@ -44,7 +44,7 @@ app.post('/',function(req,res){
   var context = {};
 
   if(req.body['Add Entry']){
-	mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?????)", req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.lbs, function(err, result){
+	mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)", (req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.lbs), function(err, result){
     if(err){
       next(err);
       return;
@@ -63,7 +63,6 @@ app.post('/',function(req,res){
       return e.id != req.body.id;
     })
   }
-  console.log(context.exercise);
   res.render('exercise',context);
 });
 
