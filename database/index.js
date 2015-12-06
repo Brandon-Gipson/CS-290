@@ -70,10 +70,6 @@ app.post('/',function(req,res){
    });
 });
 
-app.get('/update', function(req,res,next){
-	res.render('update');
-});
-
 app.post('/update',function(req,res,next){
   var context = {};
   mysql.pool.query("SELECT * FROM workouts WHERE id=?", [req.body.id], function(err, result){
@@ -95,10 +91,9 @@ app.post('/update',function(req,res,next){
         }
 		
 			context.results = "Updated " + result.changedRows + " rows.";
-		
-        res.render('update',context);
       });
     }
+	res.render('update',context);
   });
 });
 
