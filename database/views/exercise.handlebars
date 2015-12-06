@@ -1,0 +1,27 @@
+<h1>It's time to get fit</h1>
+<form method="post">
+  Name<input type="text" name="name" id="name">
+  Reps<input type="text" name="reps" id="reps">
+  Weight<input type="text" name="weight" id="weight">
+  Date<input type="date" name="date" id="date">
+  <input type="radio" name="units" id="lbs" value="lbs">lbs
+  <input type="radio" name="units" id="kgs" value="kgs">kgs
+  <input type="submit" name="Add Entry" value="Add Entry">
+</form>
+{{#if exercise}}
+<table id="dataTable">
+  {{#each exercise}}
+  <tr>
+    <td>{{this.name}}</td>
+	<td>{{this.reps}}</td>
+	<td>{{this.weight}}</td>
+	<td>{{this.date}}</td>
+	<td>{{this.units}}</td>
+    <form method="post">
+      <input type="hidden" name="id" value="{{this.id}}">
+      <input type="submit" name="Done" value="Mark as Done">
+    </form>
+  </tr>
+  {{/each}}
+</table>
+{{/if}}
