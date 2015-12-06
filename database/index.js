@@ -71,7 +71,7 @@ app.post('/',function(req,res){
 });
 
 app.get('/update', function(req,res,next){
-	res.remder('update');
+	res.render('update');
 });
 
 app.post('/update',function(req,res,next){
