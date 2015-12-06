@@ -83,7 +83,7 @@ app.post('/update',function(req,res,next){
       next(err);
       return;
     }
-    if(req.body['update']){
+    if(req.body['save']){
       var curVals = result[0];
 	  console.log(curVals);
       mysql.pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=? ",
