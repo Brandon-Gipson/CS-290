@@ -40,7 +40,7 @@ app.get('/',function(req,res,next){
   });
 });
 
-app.post('/',function(req,res){
+/*app.post('/',function(req,res){
   var context = {};
 
   if(req.body['Add Entry']){
@@ -66,7 +66,7 @@ app.post('/',function(req,res){
   }
   console.log(context.exercise);
   res.render('exercise',context);
-});
+});*/
 
 app.use(function(req,res){
   res.status(404);
