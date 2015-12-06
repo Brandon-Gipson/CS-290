@@ -44,7 +44,7 @@ app.post('/',function(req,res){
   var context = {};
 
   if(req.body['Add Entry']){
-	mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)", (req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.lbs), function(err, result){
+	mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)", [req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.lbs], function(err, result){
     if(err){
       next(err);
       return;
@@ -58,11 +58,18 @@ app.post('/',function(req,res){
 	});
   }
 
-  if(req.body['Done']){
-    req.session.toDo = req.session.toDo.filter(function(e){
+ /* if(req.body['Done']){
+    req.exercise = req.exercise.filter(function(e){
       return e.id != req.body.id;
     })
-  }
+  } */
+  
+   mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+	if(err){
+		next(err);
+		return;
+	}
+	context.exercise = 	rows;
   res.render('exercise',context);
 });
 
