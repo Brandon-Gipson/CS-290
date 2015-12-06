@@ -52,19 +52,13 @@ app.post('/',function(req,res){
 		});
 	}
 	if(req.body['delete']){
-		mysql.pool.query("DELETE FROM workouts WHERE id=?", [req.body.id], function(err,result){
+		mysql.pool.query("DELETE FROM workouts WHERE id= ?", [req.body.id], function(err, result){
 			if(err){
 				next(err);
 				return;
 			}
 		});
 	}
-
- /* if(req.body['Done']){
-    req.exercise = req.exercise.filter(function(e){
-      return e.id != req.body.id;
-    })
-  } */
   
    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
 	if(err){
