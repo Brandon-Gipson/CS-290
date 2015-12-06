@@ -41,16 +41,24 @@ app.get('/',function(req,res,next){
 });
 
 app.post('/',function(req,res){
-  var context = {};
-
-  if(req.body['Add Entry']){
-	mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)", [req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.lbs], function(err, result){
-    if(err){
-      next(err);
-      return;
-    } 
-	});
-  }
+	var context = {};
+	
+	if(req.body['Add Entry']){
+		mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)", [req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.lbs], function(err, result){
+			if(err){
+				next(err);
+				return;
+			}
+		});
+	}
+	if(req.body['delete']){
+		mysql.pool.query("DELETE FROM workouts WHERE id=?", [req.body.id], function(err,result){
+			if(err){
+				next(err);
+				return;
+			}
+		});
+	}
 
  /* if(req.body['Done']){
     req.exercise = req.exercise.filter(function(e){

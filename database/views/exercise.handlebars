@@ -27,7 +27,10 @@
 				<td>{{this.date}}</td>
 				<td>{{this.lbs}}</td>
 				<td> </td>
-				<td><input type="button" value="update" onclick="updateRow('dataTable',this)" /><input type="button" value="delete" onclick="deleteRow('dataTable',this)" /></td>
+				<td>
+					<form method="post">
+						<input type="hidden" name="id" value="{{this.id}}">
+						<input type="submit" name="delete" value="Delete"></td>
 			</tr> 
 		{{/each}}
 </table>
