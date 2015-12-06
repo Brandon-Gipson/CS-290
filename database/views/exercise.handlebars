@@ -31,7 +31,12 @@
 					<form method="post">
 						<input type="hidden" name="id" value="{{this.id}}">
 						<input type="submit" name="remove" value="Delete">
-					</form></td>
+					</form>
+					<form action="http://52.88.56.252:3000/update" method="post">
+						<input type="hidden" name="id" value="{{this.id}}">
+						<input type="submit" name="update" value="Update">
+					</form>
+				</td>
 			</tr> 
 		{{/each}}
 </table>
