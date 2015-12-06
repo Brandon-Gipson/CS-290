@@ -51,10 +51,11 @@ app.post('/',function(req,res){
 			}
 		});
 	}
-	if(req.body['delete']){
-		mysql.pool.query("DELETE FROM workouts WHERE id= ?", [req.body.deleteID], function(err, result){
-			console.log(req.body.deleteID);
+	if(req.body['remove']){
+		mysql.pool.query("DELETE FROM workouts WHERE id = ?", [req.body.id], function(err, result){
+			console.log(req.body.id);
 			if(err){
+				console.log(err);
 				next(err);
 				return;
 			}

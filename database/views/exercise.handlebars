@@ -21,7 +21,6 @@
 	<tbody>
 		{{#each exercise}}
 			<tr>
-				<td>{{this.id}}</td>
 				<td>{{this.name}}</td>
 				<td>{{this.reps}}</td>
 				<td>{{this.weight}}</td>
@@ -30,8 +29,8 @@
 				<td> </td>
 				<td>
 					<form method="post">
-						<input type="hidden" name="deleteID" value="{{this.id}}">
-						<input type="submit" name="delete" value="Delete"></td>
+						<input type="hidden" name="id" value="{{this.id}}">
+						<input type="submit" name="remove" value="Delete"></td>
 			</tr> 
 		{{/each}}
 </table>
