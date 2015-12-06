@@ -70,18 +70,16 @@ app.post('/',function(req,res){
    });
 });
 
-app.post('/update',function(req,res,next){
+
+app.get('/update',function(req,res,next){
   var context = {};
-  mysql.pool.query("SELECT * FROM workouts WHERE id=?", [req.body.id], function(err, result){
-	  console.log(result);
-	  console.log(req.body);
+  mysql.pool.query("SELECT * FROM todo WHERE id=?", [req.query.id], function(err, result){
     if(err){
       next(err);
       return;
     }
-	if(result.length == 1){
+    if(result.length == 1){
       var curVals = result[0];
-	  console.log(curVals);
       mysql.pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=? ",
         [req.body.name || curVals.name, req.body.reps || curVals.reps, req.body.weight || curVals.weight, req.body.date || curVals.date, req.body.lbs || curVals.lbs, req.body.id],
         function(err, result){
@@ -89,14 +87,10 @@ app.post('/update',function(req,res,next){
           next(err);
           return;
         }
-		
-			
+        context.results = "Updated " + result.changedRows + " rows.";
+        res.render('home',context);
       });
-	    if(req.body['save']){
-		  context.results = "Updated " + result.changedRows + " rows.";
-		}
-	}
-	res.render('update',context);
+    }
   });
 });
 
