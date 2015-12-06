@@ -40,11 +40,11 @@ app.get('/',function(req,res,next){
   });
 });
 
-/*app.post('/',function(req,res){
+app.post('/',function(req,res){
   var context = {};
 
   if(req.body['Add Entry']){
-	mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?????)", [req.query.c], function(err, result){
+	mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?????)", [req.body.name,req.body.reps,req.body.weight,req.body.date,req.body.lbs], function(err, result){
     if(err){
       next(err);
       return;
@@ -56,7 +56,6 @@ app.get('/',function(req,res,next){
       next(err);
 	}
 	});
-    context.exercise.push({"name":req.body.name, "city":req.body.city, "temp":req.body.temp,});
   }
 
   if(req.body['Done']){
@@ -66,7 +65,7 @@ app.get('/',function(req,res,next){
   }
   console.log(context.exercise);
   res.render('exercise',context);
-});*/
+});
 
 app.use(function(req,res){
   res.status(404);
