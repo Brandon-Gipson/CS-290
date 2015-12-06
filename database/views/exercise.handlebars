@@ -27,10 +27,7 @@
 				<td>{{this.date}}</td>
 				<td>{{this.units}}</td>
 				<input type="button" value="delete" onclick="deleteRow('dataTable',this)" />
-				<form method="post">
-				  <input type="hidden" name="id" value="{{this.id}}">
-				  <input type="submit" name="Done" value="Mark as Done">
-				</form>
+				
 			</tr>
 		{{/each}}
 </table>
