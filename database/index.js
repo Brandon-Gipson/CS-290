@@ -73,7 +73,7 @@ app.post('/',function(req,res){
 
 app.get('/update',function(req,res,next){
   var context = {};
-  mysql.pool.query("SELECT * FROM todo WHERE id=?", [req.query.id], function(err, result){
+  mysql.pool.query("SELECT * FROM workouts WHERE id=?", [req.query.id], function(err, result){
     if(err){
       next(err);
       return;
@@ -81,14 +81,14 @@ app.get('/update',function(req,res,next){
     if(result.length == 1){
       var curVals = result[0];
       mysql.pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=? ",
-        [req.body.name || curVals.name, req.body.reps || curVals.reps, req.body.weight || curVals.weight, req.body.date || curVals.date, req.body.lbs || curVals.lbs, req.body.id],
+        [req.body.name || curVals.name, req.body.reps || curVals.reps, req.body.weight || curVals.weight, req.body.date || curVals.date, req.body.lbs || curVals.lbs, req.query.id],
         function(err, result){
         if(err){
           next(err);
           return;
         }
         context.results = "Updated " + result.changedRows + " rows.";
-        res.render('home',context);
+        res.render('update',context);
       });
     }
   });
