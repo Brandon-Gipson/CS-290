@@ -9,18 +9,29 @@
 </form>
 {{#if exercise}}
 <table id="dataTable">
-  {{#each exercise}}
-  <tr>
-    <td>{{this.name}}</td>
-	<td>{{this.reps}}</td>
-	<td>{{this.weight}}</td>
-	<td>{{this.date}}</td>
-	<td>{{this.units}}</td>
-    <form method="post">
-      <input type="hidden" name="id" value="{{this.id}}">
-      <input type="submit" name="Done" value="Mark as Done">
-    </form>
-  </tr>
-  {{/each}}
+	<thead>
+		<tr>
+			<td>Name</td>
+			<td>Reps</td>
+			<td>Weight</td>
+			<td>Date</td>
+			<td>lBs</td>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each exercise}}
+			<tr>
+				<td>{{this.name}}</td>
+				<td>{{this.reps}}</td>
+				<td>{{this.weight}}</td>
+				<td>{{this.date}}</td>
+				<td>{{this.units}}</td>
+				<input type="button" value="delete" onclick="deleteRow('dataTable',this)" />
+				<form method="post">
+				  <input type="hidden" name="id" value="{{this.id}}">
+				  <input type="submit" name="Done" value="Mark as Done">
+				</form>
+			</tr>
+		{{/each}}
 </table>
 {{/if}}
