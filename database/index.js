@@ -79,6 +79,7 @@ app.post('/update',function(req,res,next){
       next(err);
       return;
     }
+	if(result.length == 1){
       var curVals = result[0];
 	  console.log(curVals);
       mysql.pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=? ",
@@ -94,6 +95,7 @@ app.post('/update',function(req,res,next){
 	    if(req.body['save']){
 		  context.results = "Updated " + result.changedRows + " rows.";
 		}
+	}
 	res.render('update',context);
   });
 });
