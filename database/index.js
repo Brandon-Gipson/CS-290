@@ -69,8 +69,9 @@ app.post('/',function(req,res){
 		next(err);
 		return;
 	}
-	context.exercise = 	rows;
-  res.render('exercise',context);
+   context.exercise = 	rows;
+   res.render('exercise',context); 
+   });
 });
 
 app.use(function(req,res){
