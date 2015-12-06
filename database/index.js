@@ -49,12 +49,6 @@ app.post('/',function(req,res){
       next(err);
       return;
     } 
-     else {
-      if(response){
-        console.log(response.statusCode);
-      }
-      next(err);
-	}
 	});
   }
 
