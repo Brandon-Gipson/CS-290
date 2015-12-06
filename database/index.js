@@ -91,7 +91,7 @@ app.post('/update',function(req,res,next){
         }
 		
 			context.results = "Updated " + result.changedRows + " rows.";
-		}
+		
         res.render('update',context);
       });
     }
