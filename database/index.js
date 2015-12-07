@@ -71,7 +71,7 @@ app.post('/',function(req,res){
 });
 
 
-app.get('/update',function(req,res,next){
+app.post('/update',function(req,res,next){
   var context = {};
   mysql.pool.query("SELECT * FROM workouts WHERE id=?", [req.body.id], function(err, result){
     if(err){
