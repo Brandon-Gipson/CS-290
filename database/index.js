@@ -71,7 +71,7 @@ app.post('/',function(req,res){
 });
 
 
-app.post('/update',function(req,res,next){
+app.get('/update',function(req,res,next){
 	var context = {};
 	res.render('update',context);
 });
