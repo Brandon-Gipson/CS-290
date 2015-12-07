@@ -94,10 +94,11 @@ app.post('/update',function(req,res,next){
 		});
 	  
      
-        res.render('update',context);
+        
       
   });
   }
+  res.render('update',context);
 });
 
 app.use(function(req,res){
